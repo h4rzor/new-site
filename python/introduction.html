@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
+</head>
+
+<body style="background-color:lightslategray;">
+    <h1 align="center" style="color: black;">Introduction to Python</h1>
+    <h2 style="color: black;">Emi ne moga da mrudna tupoto logo, opravi go</h2>
+
+    <img 
+        id="python_logo" 
+        src="/img/python_logo.png" 
+        height="200px" 
+        width="200px"
+    >
+
+
+
+
+
+    <div id="whole_text">
+        <p>Python is a 
+            <a href="https://en.wikipedia.org/wiki/General-purpose_programming_language">purpose programming language</a>
+            just like Java, C# C, C++ and so on. It is created in 1991, so long time ago.
+            Being general purpose it was widely used for web, back-end and fron-end development
+            throughout the years, but in the recent years, the hype around Artificial Intelligence
+            is at all high. And Python became the most widely used programming language for AI due
+            to its simplicity(some code looks like pseudo code) and its readability. It hides much
+            of the complexity of other lower level languages such as Java, C++. 
+            It works on different platforms, Linux, Windows and Mac. It became the go-to language
+            for beginners in the recent years.
+            <br>
+            In this site I'm going to use it to showcase the methods and logic behind Machine Learning
+            algorithms as well as Deep Learning ones. But first things first, let's begin by quick introduction 
+            to Python.
+        </p>
+
+        <button onclick="navigateTo()" style="background-color: green;">Next chapter: </button>
+
+        <py-repl>print("hello there")</py-repl>
+        <py-script>print("hello there")</py-script>
+    </div>
+
+
+
+    <script>
+        function navigateTo() {
+            window.location.href = "getting_started.html"
+        }
+    </script>
+</body>
