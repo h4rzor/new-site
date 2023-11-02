@@ -1,0 +1,30 @@
+#ml_box {
+    position: relative;
+    left: 100px;
+    width: 80%;
+}
+
+#dl_box {
+    position: relative;
+    right: 100px;
+    left: 300px;
+    bottom: 550px;
+    width: 80%;
+}
+
+.colored-box {
+    position: relative;
+    left: 500px;
+    bottom: 200px;
+    width: 80%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.colored-box p {
+    font-size: 22px;
+    color: #333;
+}
