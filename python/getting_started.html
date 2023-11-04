@@ -23,9 +23,10 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <py-env>
-        - numpy
-    </py-env>
+    <py-config>
+        packages = ['numpy', 'matplotlib']
+    </py-config>
+
 </head>
 
 <body style="background-color:lightslategray;">
@@ -129,7 +130,7 @@
             <div align="left">
                 <py-repl>
                     a = [1,2,3]
-                    print(a)
+                    a
                 </py-repl>
                 <p>But what happens when you decide to get only one of the values
                     inside the list? We have this thing called indexing and slicing.
@@ -172,9 +173,157 @@
                 <py-script>
                     import numpy as np
                     a = np.array([65,32,92,33,712,10])
-b = [1:3]
-print(b)
-                <py-script>
+                    b = [1:3]
+                    print(b)
+                </py-script>
+                <p>As you can see, the values that are in the variable 'b' are from index 1 to index 3
+                    not inclusive.
+                </p>
+                <br>
+                <br>
+                <p>Next, I'm going to utilise Pythons' functions over the lists. They are pretty useful in
+                    some situations. This is a good place to introduce Numpy(or np). It's a numerical library
+                    for python. It's the basis for some of the more complex tasks afterwards.
+                </p>
+                <div align="left">
+                    <py-repl>
+                        import numpy as np
+                        a = [54,22,17,999, 56]
+                        sorted(a)
+                        #As you can see, by simply typing 'sorted' in front of the list sorts it.
+                        #You can do the opposite by typing reverse after the variable's name.
+                    </py-repl>
+                    <py-repl>
+                        a = [54,22,17,999, 56]
+                        sorted(a, reverse=True)
+                        #As you can see, it is as simple as that to reverse a list.
+                    </py-repl>
+                </div>
+                <p>Different types:</p>
+                <py-repl>
+                    a = [12, 44, "apple", 43.3]
+                    type(a[0]), type(a[1]), type(a[2]), type(a[3])
+                </py-repl>
+                <p>As is evident, you can have different types of variable in a single list.
+                    It's convenient but as far as AI goes, the lists or should I say the majority of matrices 
+                    will be with floats and integers.
+                </p>
+                <br>
+                <br>
+                <p>Summing list by scalar:</p>
+                <py-repl>
+                    a = [1,2,3,4,5]
+                    b = 5
+                    # a + b is not going to work with simple python list, the thing I'm after is 
+                    # summing each and every number within the list with 'b' variable. For this cause
+                    # I could use numpy!
+                    import numpy as np
+                    a = np.array([1,2,3,4,5])
+                    a + 5
+                </py-repl>
+                <p>Multiplying list by scalar</p>
+                <py-repl>
+                    import numpy as np
+                    a = np.array([1,2,3,4,5])
+                    b = 5
+                    c = a * b 
+                    # I expect the result to be as follows: 5 to be multiplied with every single number of the list
+                    # It is just that!
+                    c
+                </py-repl>
+                <br>
+                <br>
+                <p>Iterating over lists:</p>
+                <br>
+                <p>Another thing that I'm going to use is iteration over a list. You've iterated in the cell before without knowing it.
+                    Numpy knows what to do and it multiplies under the hood.
+                </p>
+                <py-repl>
+                    import numpy as np
+                    a = np.array([1,2,3,4,5])
+                    b = 5 
+                    c = a * b 
+                    my_array = []
+                    for number in a:
+                        my_array.append(number * b)
+                    c, my_array
+                    # Yes, they are identical! So, either implicit or explicit multiplication or summation is used.
+                    # Whatever you feel like it.
+                </py-repl>
+                <br>
+                <br>
+                <p>Dictionaries:</p>
+                <py-repl>
+                    a = dict()
+                    a["ford"] = "mustang"
+                    a["suzuki"] = "hayabusa"
+                    a
+                </py-repl>
+                <p>It's very simple example. Just think of it as whenever you think of something, for example when you think of 
+                    suzuki, you immediately associate hayabusa with it. Whenever you think of a airplane, you might think of Airbus or Boeing.
+                </p>
+                <br>
+                <br>
+                <p>If else, elif:</p>
+                <p>These are at the core of the program logic flow. They are very intuitive and are used almost everywhere.</p>
+                <py-repl>
+                    a = 4
+                    b = 10
+                    c = ""
+                    if a < b:
+                        c = "b is bigger"
+                    else:
+                        c = "a is bigger"
+                    c
+                    
+                </py-repl>
+                <py-repl>
+                    # I'm going to introduce the keyword elif. It's short for else if. 
+                    z = 3
+                    c = ""
+                    if z % 2 == 0:
+                        c = "z is divisible by 2"
+                    elif z % 3 == 0:
+                        c = "z is divisible by 3"
+                    else:
+                        c = "z is neither divisible by 2 nor by 3"
+                    c
+                </py-repl>
+                <br>
+                <br>
+                <p>While loops:</p>
+                <p>While loops are almost identical to for loops. The difference is if I don't 
+                    stop the while loop, it could go on forever. Let's look at the example:
+                </p>
+                <py-repl>
+                    # The simple explanation is: initialize count to 0 and then check every iteration 
+                    # whether count is less than 10, it it's less than 10, increment it by one, if it's 
+                    # 10, STOP.
+                    count = 0
+                    while count < 10:
+                        count += 1
+                    count
+                </py-repl>
+                <br>
+                <br>
+                <p>Functions:</p>
+                <p>Functions are code that could be reused later in the code. They start with the keyword def 
+                    {name of function} and then ':'. Let's see an example:
+                </p>
+                <py-repl>
+                    def square_number(number):
+                        return number * number 
+                    # Here you see the keyword return, it is used for exiting the function. So whenever 
+                    # you exit function and it's not void(empty), it should assign a value to it's variable.
+                    # Let's see!
+
+                    square_number_result = square_number(5)
+                    
+                    # The result of the function is transferred to the 'square_number_result' variable.
+                    # This is the returned "things" from inside of the function.
+
+                    square_number_result
+                </py-repl>
             </div>
         </div>
     </div>
