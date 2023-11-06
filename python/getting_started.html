@@ -324,8 +324,140 @@
 
                     square_number_result
                 </py-repl>
+                <br>
+                <br>
+                <p>Classes and objects:</p>
+                <p>Classes and objects are again, pretty useful when it comes to reusing the code. 
+                    This is at the heart of the Object Oriented Programming or OOP. There are four pillars 
+                    of OOP:
+                    <br>
+                    <br>
+                    1. Inheritance: for example you could have a base class Person. They have name and phone number.
+                        We then could use this class for the base of some other class, let's say Teacher. The teacher 
+                        uses the name and the phone number from the Person class and adds his individual characteristics
+                        as well. This is inheritance in a nutshell.
+                    <br>
+                    <br>
+                    2. Encapsulation: it's used for preventing self inflicted mistake or whenever someone is changing 
+                        the functionality of some code that you wrote. It's achieved by using a certain keywords, such as:
+                            private, protected, internal and so on.
+                            2.1 Private: It can be used in front of a variable and restrict it's use to the scope of the class
+                                it's in.
+                            2.2 Protected: It has the upper mentioned functionality of private, with the exception that
+                                it can be accessed by inherited members.
+                            2.3 Internal: It is a variable that could be accessed from the current assembly we're in. Cannot be 
+                                accessed by another assembly.
+                    <br>
+                    <br>
+                    3. Polymorphism: it's in the name. Poly means many and morph means forms. It means that
+                        the behavior of one class could turn out to be something different in another class.
+                        For example, if we have a base class Animal and inside it we have just one method: MakeSound().
+                        We then inherit the Animal class to a Dog class and a Cat class. We know that dogs and cats are 
+                        different and this will reflect in the code as well. Whenever we call MakeSound() from either 
+                        the dog or the cat, it has different implementation from the base class, thus changing its' behavior.
+                    <br>
+                    <br>
+                    4. Abstraction: it's essentially hiding the complex part of the code behind something simple.
+                </p>
+                <br>
+                <br>
+                <p>Inheritance example</p>
+                <py-repl>
+                    class Person:
+                        def __init__(self, name, number):
+                            self.name = name
+                            self.number = number 
+                    
+                        def print_name(self):
+                            return self.name + " " + str(self.number)
+                    
+                    class Teacher(Person):
+                        pass
+                    
+                    teacher = Teacher("ivan", 445)
+                    result = teacher.print_name()
+                    #This is a simple inheritance example
+                    result
+                </py-repl>
+                <br>
+                <br>
+                <br>
+                <p>Encapsulation example:</p>
+                <py-repl>
+                    class MyClass:
+                        def __init__(self):
+                            pass
+                        def _private_method(self):
+                            return "this is private"
+        
+                        def public_method(self):
+                            return "this is public"
+                    my_class = MyClass()
+                    result = ""
+                    result = my_class.public_method()
+                    #If I call the _private_method() it will result in exception
+                    result
+                </py-repl>
+                <br>
+                <br>
+                <br>
+                <p>Polymorhpism example:</p>
+                <br>
+                <py-repl>
+                    class Animal:
+                        def __init__(self):
+                            pass
+                        def make_noise(self):
+                            return "animal noise"
+                    
+                    class Dog(Animal):
+                        def __init__(self):
+                            pass
+                        def make_noise(self):
+                            return "dog noise"
+                    
+                    class Cat(Animal):
+                        def __init__(self):
+                            pass
+                        def make_noise(self):
+                            return "cat noise"
+                    
+                    animal = Animal()
+                    dog = Dog()
+                    cat = Cat()
+                    animal.make_noise() + " ", dog.make_noise() + " ", cat.make_noise() 
+                </py-repl>
+                <br>
+                <br>
+                <br>
+                <p>Abstraction example:</p>
+                <py-repl>
+                    class Car:
+                        def __init__(self):
+                            pass
+                        def start_car():
+                            def put_key():
+                                pass 
+                            def ignition():
+                                pass 
+                            def exhaust_gases():
+                                pass
+                            def wheel():
+                                pass
+                </py-repl>
+                <p>As you can see there are many things behind the starting of the car.
+                    They can be hidden behind a start_car() methid for example.
+                </p>
+                <br>
+                <br>
+                <h3>This concludes the 'Getting started' part for now.</h3>
+                <button onclick="navigateTo()" style="background-color: green;">Next chapter: </button>
             </div>
         </div>
     </div>
-
+    <script>
+        function navigateTo() {
+            window.location.href = "numpy.html"
+        }
+    </script>
 </body>
