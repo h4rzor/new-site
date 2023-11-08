@@ -24,11 +24,199 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
-        packages = ['numpy', 'matplotlib']
+        packages = ['numpy', 'matplotlib', 'scikit-learn']
     </py-config>
 
 </head>
 
-<body>
-    <h1>hello from numpy</h1>
+<body style="background-color:lightslategray;">
+    <h1 align="center">Getting started with Numpy</h1>
+    <br>
+    <p>Overview of Numpy:</p>
+    <br>
+    <p>Numpy is a Python library created for working with arrays. It
+        also has functions for working in domain of linear algebra,
+        fourier transform and matrices.
+        Matrices would be very beneficial to me, because all of deep learning
+        is essentially matrix multiplication.
+    </p>
+    <br>
+    <h5>Why to use Numpy?</h5>
+    <br>
+    <p>Python lists are useful, but Python itself is very slow. It's a very
+        high level language and because of that there needs to be multiple operations
+        happening in order to be executed.
+        Numpy is written in C/C++ and as we all know, these are the working horses
+        of the programming languages(in most cases). Therefore Numpy is at times 50x faster
+        when working with lists.
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>You can install Numpy by simply typing in the terminal or CMD this
+        line of code:
+    </p>
+    <py-repl>pip install numpy</py-repl>
+    <br>
+    <p>When it's installed you can import it like this:</p>
+    <py-repl>
+        import numpy as np
+        # 'as np' is alias. Whenever I call np I actually call numpy
+        # It's a syntactic sugar.
+    </py-repl>
+    <br>
+    <p>Let's create a numpy lists or arrays as they are called in Numpy.</p>
+    <py-repl>
+        import numpy as np
+        arr = np.array([1,2,3,4,5])
+        arr
+    </py-repl>
+    <p>As you can see, I'm just wrapping the ordinary list into a Numpy array
+        object. That we I'm treating the arr variable like np.array not like python list.
+    </p>
+    <br>
+    <br>
+    <p>I could check the type</p>
+    <py-repl>
+        import numpy as np
+        a = np.array([1,2,3,4])
+        # As you can see, the type is np.array
+        type(a)
+    </py-repl>
+    <br>
+    <br>
+    <p>Dimension example:</p>
+    <p>So far, I've only shown arrays that are with one row, i.e. 1D.
+        But you'll need 2D matrices at least for some of the computations.
+        I'll try to show more complex ones as well, but they are exponentially
+        hard to imagine.
+    </p>
+    <br>
+    <py-repl>
+        import numpy as np
+        arr_1d = np.array([1,2,3,4,5])
+        arr_2d = np.array([[1,2,3],[4,5,6]])
+        arr_3d = np.array([[[1,2,3],[4,5,6],[7,8,9]]])
+        arr_1d.ndim, arr_2d.ndim, arr_3d.ndim
+    </py-repl>
+    <br>
+    <p>Higher dimensional array:</p>
+    <py-repl>
+        import numpy as np
+
+        arr = np.array([1, 2, 3, 4], ndmin=5)
+
+        arr.ndim
+    </py-repl>
+    <br>
+    <br>
+    <br>
+    <p>Array indexing:</p>
+    <p>Not a lot to show here, but things will get interesting when I show
+        how to access a matrix a.k.a. 2D array.
+    </p>
+    <py-repl>
+        import numpy as np
+        arr = np.array([16,223,388,423,5])
+        arr[1], arr[3], arr[1] + arr[3]
+    </py-repl>
+    <br>
+    <p>2D array indexing:</p>
+    <py-repl>
+        import numpy as np
+        arr_2d = np.array([
+        [1,2,3,4],
+        [5,6,7,8]])
+        arr_2d[0,0], arr_2d[1,0], arr_2d[0,-1], arr_2d[1,-1]
+    </py-repl>
+    <p>It's pretty straight forward, it's just takes a little bit of practice. The first digit of the index
+        is always the row, the second is the column.
+    </p>
+    <br>
+    <br>
+    <p>Slicing 2D array:</p>
+    <py-repl>
+        import numpy as np
+        arr_2d = np.array([
+        [1,2,3,4],
+        [5,6,7,8]])
+
+        arr_2d[0, 1:4], arr_2d[1,1:5]
+    </py-repl>
+    <p>First is always the row, in the first case is the 0 row, that means [1,2,3,4], then it's the columns
+        from the first row, it says 1:4, so take the first index excluding the 4 index.
+    </p>
+    <br>
+    <br>
+    <p>Numpy shape:</p>
+    <py-repl>
+        import numpy as np
+        arr_2d = np.array([
+        [1,2,3,4],
+        [5,6,7,8]])
+        arr_2d.shape
+    </py-repl>
+    <p>This is the built in property of Numpy that calculates the shape of the matrix.
+        In this case we have two rows and four columns.
+    </p>
+    <br>
+    <br>
+    <p>Numpy reshaping:</p>
+    <p>Let's say you need to reshape an existing array for some reason. How are you going to do that?
+        Nump reshape function is the ideal choice, you just need to make sure for couple of things.
+        Let's see an example
+    </p>
+    <py-repl>
+        import numpy as np
+        arr = np.array([1,2,3,4,5,6,7,8,9,10,11,12])
+        # We have an array with 12 elements, how many rows and cols we could have that
+        # multiplies up to 12? Well, we could have 2rows and 6columns, 6cols and 2rows
+        # 4rows and 3cols and so on.
+
+        reshaped_arr = np.reshape(arr, (4,3))
+        reshaped_arr2 = np.reshape(arr, (6,2))
+        reshaped_arr.shape, reshaped_arr2.shape
+    </py-repl>
+    <br>
+    <br>
+    <p>Joining 2D arrays:</p>
+    <py-repl>
+        import numpy as np
+        arr1 = np.array([[1, 2], [3, 4]])
+
+        arr2 = np.array([[5, 6], [7, 8]])
+
+        arr = np.concatenate((arr1, arr2), axis=0)
+        # When we call the concatenate, we are joining the arrays. The key here is the argument axis.
+        # Since this is 2D array, there is just two ways to join. Join on the rows or the cols.
+        # When we join on rows, concatenate just takes the individual rows, for example [1,2] and [3,4]
+        # and it stacks it. It does this to all the other elements resulting in (4,2) shape
+        # Same with axis=1, but this time the joint things are the columns, so it's again
+        # [1,2] and [3,4] but as columns, so the resulting thing is [1,2,3,4](it doesn't stack them)
+        arr
+    </py-repl>
+    <br>
+    <br>
+    <p>Searching Numpy arrays:</p>
+    <py-repl>
+        import numpy as np
+        arr = np.array([1, 2, 3, 4, 5, 4, 4])
+
+        x = np.where(arr == 4)
+        x
+    </py-repl>
+    <p>As you can see, whenever the value in the array is 4, it saves the index of that place.
+        Resulting in the indexes 3,5,6 where four occures.
+    </p>
+    <br>
+    <br>
+    <h4>That concludes the summary of Numpy, there are other cool features, but I'm going to continue
+        with other relevant libraries for now.
+    </h4>
+    <button onclick="navigateTo()" style="background-color: green;">Next chapter: Matplotlib</button>
+    <script>
+        function navigateTo() {
+            window.location.href = "matplotlib.html"
+        }
+    </script>
 </body>

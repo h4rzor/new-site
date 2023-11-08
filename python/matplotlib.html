@@ -1,0 +1,210 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <py-env>
+        - matplotlib
+        - numpy
+    </py-env>
+</head>
+
+<body style="background-color:lightslategray;">
+    <h1 align="center">Getting started with Matplotlib</h1>
+    <br>
+    <p>Overview of Matplotlib</p>
+    <br>
+    <p>Matplotlib is a low level plotting library.It works well with Numpy arrays as well as Python lists.</p>
+    <br>
+    <p>You can install Matplotlib by simply typing in the terminal or CMD this:</p>
+    <py-repl>
+        pip install matplotlib
+    </py-repl>
+    <p>Next thing is using it. Simply type this:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+    </py-repl>
+    <p>I'm going to be using a subset of matplotlib library called pyplot for these examples.</p>
+    <br>
+    <br>
+    <p>Drawing a line:</p>
+    <br>
+    <py-repl output="first_output">
+        import numpy as np
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+x = np.array([0,6])
+y = np.array([0,50])
+plt.plot(x,y)
+fig
+    </py-repl>
+    <div id="first_output" style="width: 400px; height: 400px;"></div>
+    <br>
+    <br>
+    <br>
+    <p>Plotting without lines:</p>
+    <py-repl output="second_output">
+        import numpy as np
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+x = np.array([0,6])
+y = np.array([0,50])
+plt.plot(x,y, 'o')
+fig
+    </py-repl>
+    <div id="second_output" style="width: 400px; height: 400px;"></div>
+    <br>
+    <br>
+    <p>Plotting linestyles:</p>
+    <py-repl output="third_output">
+        import matplotlib.pyplot as plt
+import numpy as np
+fig, ax = plt.subplots()
+
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, linestyle = 'dotted')
+fig
+    </py-repl>
+    <div id="third_output" style="width: 500px; height: 400px;"></div>
+    <py-repl output="fourth_output">
+        import numpy as np
+import matplotlib.pyplot as plt
+
+models=['00','01', '02', '03', '04', '05', '06', '07', '08', '09', '10',\
+    '11', '12', '13', '14', '15', '16']
+
+fig = plt.figure()
+ax  = fig.add_subplot(111)
+
+x = np.linspace(-1,1,100)
+y = np.sin(x)
+
+clrs_list=['k','b','g','r'] # list of basic colors
+styl_list=['-','--','-.',':'] # list of basic linestyles
+
+for i in range(0,16):
+    clrr=clrs_list[i // 4]
+    styl=styl_list[i % 4]
+    modl=models[i+1]
+    frac=(i+1)/10.0
+    ax.plot(x,y+frac,label=modl,color=clrr,ls=styl)
+
+plt.legend()
+fig
+    </py-repl>
+    <div id="fourth_output" style="width: 500px; height: 400px;"></div>
+    <p>As you can see, you can iterate through different linestyles and colors.</p>
+    <br>
+    <br>
+    <br>
+    <p>Scattering:</p>
+    <py-repl output="fifth_output">
+        import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+fig, ax = plt.subplots()
+
+plt.scatter(x, y)
+# Both arrays have to be equal size and it combines the two points into its intersection
+fig
+    </py-repl>
+    <div id="fifth_output" style="width: 500px; height: 400px;"></div>
+    <br>
+    <p>Different colors:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+colors = np.array(["red","green","blue","yellow","pink","black","orange","purple","beige","brown","gray","cyan","magenta"])
+fig, ax = plt.subplots()
+
+plt.scatter(x, y, c=colors)
+# Example of different colors
+fig
+    </py-repl>
+    <br>
+    <br>
+    <br>
+    <p>Bars:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+fig, _ = plt.subplots()
+
+plt.bar(x,y)
+# Perfect for quick look at the distribution of certain things
+fig
+    </py-repl>
+    <br>
+    <br>
+    <br>
+    <p>Hisograms:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.normal(170, 10, 250)
+fig, _ = plt.subplots()
+
+plt.hist(x)
+# Distribution chart example
+fig
+    </py-repl>
+    <br>
+    <br>
+    <br>
+    <p>Pie chart:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.array([35, 25, 25, 15])
+fig, _ = plt.subplots()
+
+plt.pie(y)
+fig
+    </py-repl>
+    <br>
+    <p>Pie chart with legend and names:</p>
+    <py-repl>
+        import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+fig, _ = plt.subplots()
+
+plt.pie(y, labels = mylabels)
+plt.legend(title = "Four Fruits:")
+fig
+    </py-repl>
+    <br>
+    <br>
+    <h4>This concludes the brief summary of Matplotlib. There are many other things that I could show, but 
+        they can easily be googled and implemented. This will suffice for now.
+    </h4>
+    <button onclick="navigateTo()" style="background-color: green;">Next chapter: Machine Learning Basics</button>
+    <script>
+        function navigateTo() {
+            window.location.href = "../ml/introduction.html"
+        }
+        console.log(window.location.href);
+        console.log("ksa;jdfn;askdjnf");
+    </script> 
+</body>
+
+</html>
