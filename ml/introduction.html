@@ -6,13 +6,9 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
-
-    <py-env>
-        - matplotlib
-        - numpy
-    </py-env>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 </head>
 
 <body style="background-color:lightslategray;">
@@ -20,38 +16,123 @@
     <h3 align="center">What is Machine Learning exactly?</h3>
     <p>Machine Learning is not a new idea. It is based on the model of brain
         cell interaction. This model was created in 1949 by Donald Hebb in a book titled "The Organization of Behavior".
-        The book presents Hebb's theories on neuron excitement and communication between neurons. Arthur Samuel 
-        designed a number of mechanisms allowing his program to become better. In what Samuel called rote learning, 
+        The book presents Hebb's theories on neuron excitement and communication between neurons. Arthur Samuel
+        designed a number of mechanisms allowing his program to become better. In what Samuel called rote learning,
         his program recorded/remembered all positions it had already seen and combined this with the values
-        of the reward function. Arthur Samuel coined the phrase “machine learning” in 1952. 
+        of the reward function. Arthur Samuel coined the phrase “machine learning” in 1952.
         In 1957, Frank Rosenblatt combined Donald Hebb's model of brain cell interaction with Arthur Samuel's
         machine learning efforts and created the perceptron.
-        This is a quick summary of Machine Learning history. We has pretty huge advancements inbetween today and 
+        This is a quick summary of Machine Learning history. We has pretty huge advancements inbetween today and
         1949. For example Deep Blue, the first computer to beat a GrandMaster at chess. Various facial recognition
         software, AlphaGo and so on.
     </p>
     <br>
     <br>
     <h2 align="center"><a href="https://en.wikipedia.org/wiki/Perceptron">Perceptron model Rosenblatt</a></h2>
-    <img 
-        src="https://slideplayer.com/slide/14135708/86/images/4/Perceptron+Model+Frank+Rosenblatt+%281957%29+-+Cornell+University.jpg" 
-        alt="Perceptron model"
-        style="position: relative; left: 100px; height: 500px; width: 900px;"/>
+    <img src="https://slideplayer.com/slide/14135708/86/images/4/Perceptron+Model+Frank+Rosenblatt+%281957%29+-+Cornell+University.jpg"
+        alt="Perceptron model" style="position: relative; left: 100px; height: 500px; width: 900px;" />
 
-    <p>This is the perceptron model. It might be a little bit daunting at first, but let me divide the complex 
+    <p>This is the perceptron model. It might be a little bit daunting at first, but let me divide the complex
         problem into smaller manageable parts.<br><br>
         1. I'm going to start with the variables x1, x2...x4. What are they? They are the inputs from the user.
         They should me numerical, either whole(integers) or double(fractions). Imagine you have to predict
-        the salary of a person based on his age. Their age is the 'x' in this case, it's called the 
+        the salary of a person based on his age. Their age is the 'x' in this case, it's called the
         independant variable. I'm going to cover the dependant variable later. <br><br>
-        2. Next thing is variables w1, w2...w4. They are called weights, hence they are noted with 'w'. 
-        These are maybe the most importat things in the Deep Learning(soon). Well, if we want some result 
-        from this model, what we could do? Maybe change the input, but that's not really what we want. We 
-        want the input not to be changed, so what else can we change? Maybe the weight? Yes, the weights 
-        can be changed in order to yield some other output(other things could too, but not now). Changing 
+        2. Next thing is variables w1, w2...w4. They are called weights, hence they are noted with 'w'.
+        These are maybe the most importat things in the Deep Learning(soon). Well, if we want some result
+        from this model, what we could do? Maybe change the input, but that's not really what we want. We
+        want the input not to be changed, so what else can we change? Maybe the weight? Yes, the weights
+        can be changed in order to yield some other output(other things could too, but not now). Changing
         the weights, you could change the output. <br><br>
-        3.  opitai da napravish layouta kato tozi na github
+        3. Next thing in the list of things is summing all the variables. We have x1*w1, x2*w2 ... x4*w4.
+        Everything is summed. <br><br>
+        4. The last part is the activation function. What does this mean? Well, it propagates the result
+        from the previous actions if, and only if they summation result is 1, otherwise the propagated
+        thing will be set to zero. This is what is called a step function. This was the first activation
+        function and later you'll learn why it's the most useless one.
     </p>
-    
-    <p>What is ML used for?</p>
+
+    <p>What is AI used for?</p>
+    <p>It is used for everything ranging from predictin house prices from set of
+        features, for example number of rooms, square meters and so on. It is used
+        in medicine and is helping doctors who are looking at a xray of a patient. This is called image captioning
+        AI made autonomous driving accessible to the public. Every advancement in the self-driving cars was
+        made possible with AI. Generative networks, for example Dall-e, Midjourney who generate images from
+        given input. There is a boom in the AI world recently, but not enough jobs...
+    </p>
+    <br>
+    <br>
+    <br>
+    <p align="center">Machine Learning parts:</p>
+    <p>
+        Machine learning is divided into several parts. <br>
+        First is the classic machine learning with algorithms like linear regression, logistic regression, SVM, decision
+        trees, random forests k-nearest neighbors, k-means.,
+        I know that sounds like a lot, but the could be subdivided into categories and could be used for different
+        purposes depending on the task at hand.<br><br>
+        1. Supervised learning <br>
+    <ul>
+        So what is being supervised? The algorithm we use is being supervised, but by whom? By us.
+        <li>We get the the rows of data that needs to be fed into the algorithm, then it spits out some answer, in the
+            most cases it's a value between 0 and 1(for the simpler algorithms and simpler problems).<br> </li><br>
+        <li>Then we take this value and we compare it to the 'Ground truth' value that we know it's true.</li><br>
+        <li>Then we calculate a so called loss. For example the simplest one is called Mean Squared
+            Error or MSE for short.
+            <p>MSE=\( \frac{\sum_{i=0}^{N - 1} (y_i - \hat{y}_i)^2}{N} \)</p>
+            In a nutshell, the larger the error, the worse the model is. Here we are calculating
+            the ground truth - our_prediction and we squared it in order to make it positive.
+            And then divide by number of values we have.
+        </li>
+        <br>
+        <li>The next part is so called backpropagation(at least for the neural network part). 
+            It involves some complex math, but I'm going to explain it as simple as I can. <br> 
+            The error is big, we need to lower it somehow. We have this thing that is called gradient,
+            it's the rate of change in the function of the neuron. Simpler said, every neuron 
+            contributes to the whole error by some amount. We then update the value of the neuron 
+            with the Learning Rate(more of that later) and the gradient of the neuron. And this way 
+            the gradient will slowly approach a value that yields most sense for the neuron. The code 
+            part is maybe simpler.
+        </li><br>
+        <li>The final part is called updating(it's also for the neural networks). 
+            We found out that we have to change the neuron's data by some small amount and 
+            the gradient. We have to change all the neurons that way. And then the cycle begins all 
+            over again. We receive a row, it goes through the algorithm, it spits out some value, we 
+            juxtapose it to the real one, backpropagate and update. <br> <br> <br>
+        </li>
+    </ul>
+    </p>
+    <p>2. Unsupervised learning <br></p>
+    <p>So what's being unsupervised. The whole algorithm.</p>
+    <ul>
+        <li>
+            We get rows of some data, doesn't need to be in table form or related. The point
+             of this type of algorithms is: clustering, anomaly detection, generative ai and so on.
+        </li> <br>
+        <li>Clustering: let's say we have some point on the coordinate system and that's it.
+             We're told that we have to divide them into 4 categories of customers for example.
+              We might try to look at the coordinate system and understand what's going on or use
+               clustering algorithm. Essentially we feed the algorithm and we expect it to divide 
+               the points into useful categories. We then look into the reason why the algorithm chose
+                a certain point to be category 1 or why other point is category 2. 
+        </li>
+        <br>
+        <li>Anomaly detection: it's almost exactly like the clustering one,
+             but with an exception. We're trying to find an outlier among the points. What would that mean?
+              If, for example you withdrew 1000lv. from a bank that is located in your town every month, 
+              that's ordinary. But if you are in some other town and try to withdraw 10k it's considered 
+              an outlier. And the banking software would send you SMS with a warning(hopefully) 
+        </li>
+        <br>
+        <li>Generative ai: it's this that is behind the Dall-e, Mudjourney and many others algorithms.
+             They essentially take input from the user and then paint a pretty convincing picture of 
+             what's being written, even if it doesn't exist 
+        </li>   
+    </ul>
+    <h3>This concludes the brief summary of Machine Learning. Going to continue with math part of it.</h3>
+    <button onclick="navigateTo()" style="background-color: green;">Next chapter: Math for AI</button>
+    <script>
+        function navigateTo() {
+            window.location.href = "math.html"
+        }
+    </script>
 </body>
