@@ -22,9 +22,9 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <!--<script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> -->
     </script>
     <py-config>
         packages = ['numpy', 'matplotlib', 'scikit-learn']
@@ -33,5 +33,177 @@
 
 <body style="background-color:lightslategray;">
     <h1 align="center">Getting started with some maths</h1>
-    
+    <h3 align="center">There are a considerable amount of topics of Machine Learning, especially on maths.
+        I'm going to try to narrow it down to topics that are useful in Machine Learning in general, not 
+        useful in math as a whole.
+    </h3>
+    <p>1. Linear Algebra</p>
+    <p>Linear algebra is a  mathematical discipline that deals with vectors and matrices and, more
+        generally, with vector spaces and linear transformations. Unlike other parts of mathematics 
+        that are frequently invigorated by new ideas and unsolved problems, linear algebra is
+        very well understood. Its value lies in its many applications, from mathematical physics 
+        to modern algebra and coding theory.
+    </p>
+    <p>This sound great! In ML there are major uses for linear algebra, you will be working with vectors matrices 
+        and linear transformations. These are the things that are in the basis of the AI revolution.
+    </p>
+    <ul>
+        <li>
+            1.1 Scalar
+        </li>
+        <p>What is a scalar?</p>
+        <p>A physical quantity that is completely described by its magnitude. Examples of scalars are 
+            volume, density, speed, energy, mass, and time.
+        </p>
+        <p>Example of a scalar is the volume of a thing. V = 4.23m^3.</p>
+        <p>Every time we initiate a variable like this, it's a scalar.</p>
+        <py-repl>
+            a = 5.234
+            a
+        </py-repl>
+        <p>Different operations that you could do with scalars include: Addition, Subtraction, Multiplication,
+            Division, Exponentiation, Floor Division, Modulus, every comparison operator and increment and decrement.
+            Pretty much the whole suite of things.
+        </p>
+        <p>Let's see some of them.</p>
+        <py-repl>
+            a = 5.643
+            b = a + 2
+            c = a - 5
+            d = a * 10
+            e = a / 2
+            f = a ** 2
+            g = a // 
+            h = a % 2
+            b, c, d, e, f, g, h
+        </py-repl>
+        <br>
+        <br>
+        <li>
+            1.2 Vectors
+        </li>
+        <p>Vectors are simply more than one scalars in a single data structures. For the purpose of 
+            Machine Learnign at least. In maths terms: a quantity or phenomenon that has two independent properties: magnitude and direction.
+        </p>
+        <p>You can do plenty of things with vectors.</p>
+        <p>Arithmetic operations:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+            vector_b = np.array([4,5,6])
+            
+            #Addition
+            addition = vector_a + vector_b
+
+            #Subtraction
+            subtraction = vector_b - vector_a
+
+            #Multiplication
+            multiplication = vector_a * vector_b
+
+            #Division 
+            division = vector_b / vector_a
+
+
+            addition, subtraction, multiplication, division
+        </py-repl>
+        <p>This looks similar to the previous operations with the scalars.</p>
+        <br>
+        <br>
+        <p>Dot product:</p>
+        <py-repl>
+            import numpy as np
+            vector_a = np.array([1,2,3])
+            vector_b = np.array([4,5,6])
+
+            dot_prod = np.dot(vector_a, vector_b)
+
+            dot_prod
+        </py-repl>
+        <p>You take element at index 0 and multiply it with the corresponding element from the other vector.
+            You then do the same with all the elements and them sum them all together. 
+        </p>
+        <br>
+        <br>
+        <p>Element-wise Operations:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+            vector_b = np.array([4,5,6])
+
+            result_square = np.square(vector_a)
+            result_sqrt = np.sqrt(vector_a)
+            result_exp = np.exp(vector_a)
+
+            result_square, result_sqrt, result_exp
+        </py-repl>
+        <p>It's just like the scalar, but the difference is the operation, for example square is done 
+            to all the elements. Think of it as a sliding window and whenever some value is passed over, 
+            it is being squared.
+        </p>
+        <br>
+        <br>
+        <p>Sum and Mean:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+            vector_b = np.array([4,5,6])
+
+            sum_vector = np.sum(vector_a)
+            mean_vector = np.mean(vector_a)
+
+            sum_vector, mean_vector
+        </py-repl>
+        <p>Sum vector is self described. The mean is the average value of the vector/s. 
+            For example the mean vector of 'vector_a' is 2. Sum(1,2,3) which results in 6 and then 
+            divide this with the length of the vector.
+        </p>
+        <br>
+        <br>
+        <p>Concatenation:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+            vector_b = np.array([4,5,6])
+
+            concatenated_vector = np.concatenate((vector_a, vector_b))
+        </py-repl>
+        <p>It glues them together.</p>
+        <br>
+        <br>
+        <p>Broadcasting:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+
+            vector_a = vector_a + 10
+            vector_a
+        </py-repl>
+        <p>I explained it earlier. The 10 becomes [10, 10, 10] in the background. Therefore the result is
+            [11, 12, 13]
+        </p>
+        <br>
+        <br>
+        <p>Reshape:</p>
+        <py-repl>
+            import numpy as np
+
+            vector_a = np.array([1,2,3])
+
+            reshaped_vector = vector_a.reshape((3, 1))
+            reshaped_vector
+        </py-repl>
+        <p>The reshaping thing will be very handy in the future. All you have to remember when reshaping 
+            a vector, 1D or 2D or 3D vector is this: let's say the original shape is (4,3). You could do 
+            (6,2), (12, 1) and so on, so the new shape must add up to the original shape.
+        </p>
+        <br>
+        <br>
+        
+    </ul>
 </body>
